@@ -161,5 +161,3 @@ Este proyecto está bajo la Licencia MIT. Consulta el archivo `LICENSE` para má
 Si tienes preguntas o sugerencias, no dudes en contactarme a través de mi perfil de GitHub: [espinozan](https://github.com/espinozan).
 
 ---
-
-Con esta versión detallada, ahora tienes una documentación que proporciona una visión completa sobre cómo instalar y utilizar "Kairos", así como su funcionamiento técnico. Esto debería ser útil para los expertos en pentesting que deseen aprovechar al máximo tu herramienta. ¡Espero que te sirva!

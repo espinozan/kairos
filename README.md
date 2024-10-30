@@ -4,7 +4,7 @@ Kairos es una herramienta avanzada de pentesting diseñada específicamente para
 ![wikii] 
 
 
-(https://en.wikipedia.org/wiki/File:Francesco_Salviati_005.jpg)
+!(https://en.wikipedia.org/wiki/File:Francesco_Salviati_005.jpg)
 
 
 ---

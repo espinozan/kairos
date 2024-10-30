@@ -1,5 +1,5 @@
 # kairos
-Kairos es una herramienta avanzada de pentesting diseñada específicamente para entornos de Active Directory (AD).
+Kairos es una herramienta avanzada para pentesting en Active Directory, diseñada para automatizar y facilitar la escalada de privilegios, administración de certificados, ataques y persistencia en sistemas mediante técnicas de evasión.
 
 <div style="display: flex; gap: 10px;">
     <img src="https://github.com/user-attachments/assets/321e9bb8-9c1e-4cf3-b16d-286f95d5a1fe" alt="220px-Francesco_Salviati_005" width="250" height="300">
@@ -12,19 +12,50 @@ Kairos es una herramienta avanzada de pentesting diseñada específicamente para
 
 ## Descripción
 
-**Kairos** es una herramienta avanzada de pentesting diseñada específicamente para entornos de Active Directory (AD). Su objetivo principal es automatizar el proceso de escalada de privilegios, gestionar certificados y aplicar técnicas de persistencia para mejorar la seguridad y la administración de redes complejas.
+Kairos es una herramienta avanzada de pentesting diseñada para fortalecer la seguridad en entornos de Active Directory (AD). Su enfoque se centra en automatizar los procesos de escalada de privilegios, la gestión de certificados, la persistencia y técnicas de evasión, optimizando y simplificando las tareas críticas de administración y seguridad en redes complejas.
 
-El nombre "Kairos" proviene de la antigua Grecia, donde significa "el momento oportuno" o "el tiempo adecuado". En el contexto de la ciberseguridad, se refiere a aprovechar la oportunidad perfecta para ejecutar ataques y defensas, convirtiendo momentos críticos en ventajas estratégicas.
+El nombre "Kairos" proviene de la mitología griega y representa el "momento oportuno" o "tiempo adecuado", el instante crítico en el que una oportunidad única debe ser aprovechada para obtener un resultado ideal. En el contexto de ciberseguridad, Kairos simboliza la capacidad de detectar y aprovechar oportunidades precisas para realizar ataques y defensas estratégicas en los momentos clave.
+
+Este concepto, profundamente arraigado en la filosofía y literatura griega, evoca la importancia de tomar decisiones rápidas y efectivas, actuando con agudeza, audacia y adaptabilidad. Kairos es, en esencia, una herramienta que facilita la identificación y explotación de esos momentos críticos en los que la seguridad puede ser reforzada o vulnerada, convirtiendo las oportunidades en una ventaja táctica para mejorar la resiliencia y control de los sistemas AD.
 
 ## Características
 
-- **Automatización Inteligente de Escalada de Privilegios**: Integración con herramientas como SharpHound y PowerUp para detectar permisos excesivos y ejecutar escaladas automáticamente.
-  
-- **Gestión de Certificados y Autenticación Kerberos**: Solicitud de Tickets Granting Tickets (TGT) mediante Certipy, con capacidades para detectar configuraciones inseguras en Active Directory Certificate Services (ADCS).
+Kairos automatiza y ejecuta varias funciones de pentesting en Active Directory. A continuación se detallan las principales:
 
-- **Ataques Automatizados de Relay y Mimikatz**: Implementación de técnicas avanzadas como NTLM Relay y DCSync para la obtención de credenciales.
+Convertir Certificado PFX a PEM:
 
-- **Obfuscación y Persistencia**: Aplicación de técnicas de evasión contra sistemas de detección (EDR) y generación de Golden Tickets para asegurar el acceso persistente.
+Convierte un archivo PFX a formato PEM para su uso en autenticación basada en certificados.
+Detección de Vulnerabilidades en ADCS:
+
+Verifica configuraciones inseguras en Active Directory Certificate Services.
+Solicitar Ticket de Servicio (TGT):
+
+Solicita un TGT (Ticket Granting Ticket) mediante Certipy para autenticación en el dominio.
+Extracción de TGT:
+
+Extrae y guarda el TGT solicitado en un archivo de log para su uso posterior.
+Autenticación usando TGT:
+
+Utiliza el TGT para autenticarse y realizar volcados de datos en el Controlador de Dominio.
+Enumeración de ACLs:
+
+Usa SharpHound para listar ACLs (Listas de Control de Acceso) y buscar rutas de escalada de privilegios.
+Escalada de Privilegios:
+
+Identifica permisos como WriteDACL en cuentas de servicio y realiza escalada de privilegios.
+Ataque NTLM Relay:
+
+Verifica dispositivos vulnerables y lanza un ataque de relay NTLM si se detectan vulnerabilidades.
+Volcado de NTDS:
+
+Realiza un volcado de los datos NTDS para recopilar información confidencial en el dominio.
+Persistencia y Evasión:
+
+Genera un Golden Ticket usando Mimikatz para mantener acceso persistente al dominio.
+Ofuscación del Script:
+
+Ofusca el script principal para evitar detección y facilitar técnicas de evasión.
+
 
 ## Requisitos
 
@@ -52,57 +83,48 @@ git clone https://github.com/espinozan/kairos.git
 cd kairos
 ```
 
-### 2. Instalar Dependencias
+### 2. Instalar Kairos
 
-Asegúrate de tener Python 3 y pip instalados. Luego, instala las dependencias requeridas ejecutando:
+Instalación con el Script
+La instalación de Kairos implica el uso de install_kairos.sh, que configura todas las herramientas necesarias para que Kairos funcione correctamente.
 
-```bash
-pip install -r requirements.txt
-```
+## *Script de instalacion de kairos *(**install_kairos.sh**)*
 
-### 3. Instalación de Certipy
+### Ejecutar el Script de Instalación
 
-Descarga Certipy desde su [repositorio oficial](https://github.com/Optiv/Certipy) y colócalo en `/path/Certipy/`.
-
-### 4. Instalación de Impacket
-
-Sigue las instrucciones en el [repositorio oficial de Impacket](https://github.com/SecureAuthCorp/impacket) para instalarlo. Asegúrate de que esté accesible en tu PATH.
-
-### 5. Instalación de SharpHound
-
-Descarga SharpHound y colócalo en `/path/SharpHound/`.
-
-### 6. Instalación de Mimikatz
-
-Descarga Mimikatz y colócalo en `/path/Mimikatz/`.
-
-### 7. Dar permisos de ejecución al script
-
-Asegúrate de que el script tenga permisos de ejecución:
+Dar Permisos de Ejecución:
 
 ```bash
-chmod +x script.sh
+chmod +x install_kairos.sh
 ```
+### Ejecutar la Instalación Completa:
 
-## Uso
-
-### Ejemplo de Uso
-
-Para ejecutar **Kairos**, usa el siguiente comando en la terminal:
+Usa la opción -p para instalar todas las herramientas necesarias
 
 ```bash
-./script.sh -d DOMAIN -u USER -p PASS -c CERT_PATH -a ADCS_IP -i DC_IP -o NTDS_DUMP_PATH
+./install_kairos.sh -p
+```
+# Uso de Kairos
+
+Para ejecutar Kairos, utiliza el script **kairos.sh**, que incluye múltiples opciones para adaptarse a distintos escenarios de pentesting.
+
+## Parámetros de Ejecución
+
+Ejemplo de uso:
+
+```bash
+./kairos.sh -d DOMAIN -u USER -p PASS -c CERT_PATH -a ADCS_IP -i DC_IP -o NTDS_DUMP_PATH
 ```
 
-### Argumentos
+### Argumentos:
 
-- `-d DOMAIN`: Especifica el dominio de Active Directory.
-- `-u USER`: Nombre de usuario que se utilizará para la autenticación.
-- `-p PASS`: Contraseña del usuario.
-- `-c CERT_PATH`: Ruta al certificado en formato PFX (ejemplo: `/path/to/certificate.pfx`).
-- `-a ADCS_IP`: Dirección IP del servidor de Active Directory Certificate Services (ADCS).
-- `-i DC_IP`: Dirección IP del controlador de dominio (DC).
-- `-o NTDS_DUMP_PATH`: Ruta donde se almacenará el volcado NTDS (ejemplo: `/path/to/ntds_dump`).
+- `-d DOMAIN`: Nombre del dominio (por ejemplo, empresa.local).
+- `-u USER`: Nombre de usuario en Active Directory que se utilizará para la autenticación.
+- `-p PASS`: Contraseña de usuario.
+- `-c CERT_PATH`: Ruta al archivo PFX del certificado (ejemplo: `/path/to/certificate.pfx`).
+- `-a ADCS_IP`: Dirección IP del servidor de Certificación ADCS (Active Directory Certificate Services).
+- `-i DC_IP`: Dirección IP del Controlador de Dominio.
+- `-o NTDS_DUMP_PATH`: Ruta donde se almacenarán los volcados de datos NTDS (ejemplo: `/path/to/ntds_dump`).
 
 ### Funcionamiento
 

@@ -164,6 +164,37 @@ Ejemplo de uso:
    - El script se ofusca utilizando codificación base64 para evitar su detección por herramientas de seguridad.
    - Esto ayuda a asegurar que las actividades de pentesting sean menos visibles para los sistemas de defensa.
 
+
+### Sección de Solución de Problemas
+
+#### Errores Comunes y Soluciones
+
+1. **Error de Permisos en la Instalación**:  
+   - **Solución**: Verifica que tienes permisos de root o ejecuta el script con `sudo`.
+
+2. **Dependencias no Encontradas**:  
+   - **Solución**: Asegúrate de instalar todas las dependencias requeridas manualmente o verifica si el script de instalación tiene algún problema al descargarlas.
+
+3. **Problemas de Conexión al ADCS o DC**:
+   - **Solución**: Revisa que las IPs y rutas estén correctamente configuradas y que haya comunicación de red con esos servidores.
+
+#### Salida de Ejemplo
+
+Proporciona un ejemplo más detallado con una salida de ejemplo para cada paso clave:
+
+```bash
+./kairos.sh -d example.com -u user -p pass123 -c /path/cert.pfx -a 192.168.1.10 -i 192.168.1.20 -o /path/ntds_dump
+
+# Salida esperada
+[+] Conversión de Certificado PFX a PEM: Éxito
+[+] Detectando configuraciones inseguras en ADCS: Se encontraron 2 vulnerabilidades
+[+] Solicitando TGT: Éxito
+...
+```
+
+Esto quizas puede ayudar a validar los resultados y seguir paso a paso el funcionamiento de la herramienta.
+
+
 ## Consideraciones de Seguridad
 
 - **Uso Responsable**: **Kairos** está diseñado para ser utilizado por profesionales de la ciberseguridad y pentesters. No utilices esta herramienta en sistemas sin autorización explícita.

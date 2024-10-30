@@ -1,7 +1,8 @@
 # kairos
 Kairos es una herramienta avanzada de pentesting diseñada específicamente para entornos de Active Directory (AD).
 
-![(https://en.wikipedia.org/wiki/File:Francesco_Salviati_005.jpg)]
+
+![220px-Francesco_Salviati_005](https://github.com/user-attachments/assets/321e9bb8-9c1e-4cf3-b16d-286f95d5a1fe)
 
 
 ---

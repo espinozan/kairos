@@ -1,4 +1,4 @@
-# kairos
+# *** KAIROS ***
 Kairos es una herramienta avanzada para pentesting en Active Directory, diseñada para automatizar y facilitar la escalada de privilegios, administración de certificados, ataques y persistencia en sistemas mediante técnicas de evasión.
 
 <div style="display: flex; gap: 10px;">
